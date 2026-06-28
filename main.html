@@ -9,7 +9,8 @@
 <body>
     <!-- Taskbar -->
     <div 
-    style="display: flex; background-color: #b6d4db; justify-content: space-between; color: black;">
+    id = "taskbar"
+    class="taskbar">
         <img style="object-fit:contain; margin-left: 16px; justify-content: start;" src="./ScaffoldOS.png"/>
         <p style="color: black; justify-content: start;">ScaffoldOS</p>
         <p id="timeElement" style="margin-right: 16px; color: black; justify-content: end;">Time</p>
@@ -21,34 +22,55 @@
     class="window"
     style="top: 35%; left: 25%;">
     <!-- Title Header-->
-        <div style="display: flex; justify-content: flex-end; color: black; height: 15px;">
-            <div class="welcomeopen" id="welcomeopen">
+        <div 
+        class="dragheader" 
+        id="welcomeWindowheader">
+            <div class="openbutton" id="welcomeopen">
                 <p>▭</p>
             </div>
             <div class="closebutton" id="welcomeclose">
                 <p>X</p>
             </div>
         </div>
-        <div class="welcomeheader" id="welcomeWindowheader">
-            <p>dragHERE</p>
-        </div>
-
+        <!-- Window Content-->
         <h1>ScaffoldOS</h1>
         <h2>Introduction</h2>
         <p>Hello, This Website was created by Lycotope<br>
         It was created for the hackClub StarDance Challenge</p>
-        <img src="./Cart.png" />
         <a href="https://www.instagram.com/starthackclub/">Instagram of HackClub</a>
     </div>
 
-    <!-- This is a Web App-->
-    <div id="desktopApps" style="padding: 64px;">
+    <!-- This is a Clock App-->
+    <div 
+    id="desktopApps" 
+    style="padding: 64px;">
         <div 
         style="padding: 16px; text-align: center; width: fit-content">
             <img src="Clock.png"/>
             <p style="margin: 0px;">Clock</p>
         </div>
     </div> 
+
+    <!-- This is a Clock App window-->
+    <div 
+    id="clockWindow"
+    class="window"
+    style="top: 65%; left: 15%;">
+    <!-- Title Header-->
+        <div 
+        class="dragheader" 
+        id="clockWindowheader">
+            <div class="openbutton" id="clockWindowopen">
+                <p>▭</p>
+            </div>
+            <div class="closebutton" id="clockWindowclose">
+                <p>X</p>
+            </div>
+        </div>
+    <!-- Window Content-->
+
+
+    </div>
 
     <script src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />

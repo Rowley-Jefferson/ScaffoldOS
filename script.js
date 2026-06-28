@@ -4,17 +4,28 @@ setInterval(function ()
 
 // welcome window has the id of "welcome"
 var welcomeScreen = document.querySelector("#welcomeWindow")
-
 var welcomeScreenClose = document.querySelector("#welcomeclose")
-
 var welcomeScreenOpen = document.querySelector("#welcomeopen")
 
-welcomeScreenClose.addEventListener("click", function() {
-  closeWindow(welcomeScreen);
+welcomeScreenClose.addEventListener("click", function() {closeWindow(welcomeScreen);});
+
+welcomeScreenOpen.addEventListener("click", function() {openWindow(welcomeScreen);});
+
+// clock window has the id of "clock"
+var clockScreen = document.querySelector("#clockWindow")
+var clockScreenClose = document.querySelector("#clockWindowclose")
+var clockScreenOpen = document.querySelector("#clockWindowopen")
+
+clockScreenClose.addEventListener("click", () => closeWindow(clockScreen));
+clockScreenOpen.addEventListener("click", () => openWindow(clockScreen));
+
+// window select
+welcomeScreen.addEventListener("mousedown", function() {
+  focusWindow(welcomeScreen);
 });
 
-welcomeScreenOpen.addEventListener("click", function() {
-  openWindow(welcomeScreen);
+clockScreen.addEventListener("mousedown", function() {
+  focusWindow(clockScreen);
 });
 
 // close a window that is passed through as "element"
@@ -25,10 +36,24 @@ function closeWindow(element) {
 // ngl, i have no fucking idea what flex is, but my brain i son autopilotso ill figure it out later
 function openWindow(element) {
   element.style.display = "block"
+  focusWindow(element)
+}
+
+var topbar = document.querySelector("#taskbar")
+
+var topIndex = 1
+function focusWindow(element) {
+  topIndex++;
+  element.style.zIndex = topIndex;
+  topbar.style.zIndex = topIndex + 1; 
+  deselectIcon(selectedIcon)
 }
 
 // Make the DIV element draggable:
 dragElement(document.getElementById("welcomeWindow"));
+dragElement(document.getElementById("clockWindow"));
+
+// My code -> Copy-pasted Code Barrier //
 
 // Step 1: Define a function called `dragElement` that makes an HTML element draggable.
 function dragElement(element) {
@@ -71,7 +96,7 @@ function dragElement(element) {
     initialX = e.clientX;
     initialY = e.clientY;
     // Step 11: Update the element's new position by modifying its `top` and `left` CSS properties.
-    element.style.top = (element.offsetTop - currentY) + "px";
+    element.style.top = Math.max(topbar.offsetHeight + 8 + element.offsetHeight/2,element.offsetTop - currentY) + "px";
     element.style.left = (element.offsetLeft - currentX) + "px";
   }
 
@@ -82,10 +107,24 @@ function dragElement(element) {
   }
 }
 
-// icon selected
+// icon selected Handler
 var selectedIcon = undefined
 
 function selectIcon(element) {
   element.classList.add("selected");
   selectIcon = element
+}
+
+function deselectIcon(element) {
+  element.classList.remove("selected")
+  selectIcon = undefined
+}
+
+function handleIconTap(element) {
+  if (element.classList.contains("selected")) {
+    deselectIcon(element)
+    openWindow(element)
+  } else {
+    selectIcon(element)
+  }
 }
