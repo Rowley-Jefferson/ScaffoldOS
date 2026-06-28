@@ -1,0 +1,29 @@
+.closebutton {
+    cursor: pointer; 
+    margin-right: 8px;
+    width: 12px; 
+    color: red;
+    justify-content: flex-end;
+}
+
+.welcomeopen {
+    cursor: pointer;
+    margin-right: 8px;
+    justify-content: flex-end;
+}
+
+.welcomeheader {
+    cursor: grab;
+    width: 54px;
+    justify-content: flex-start;
+}
+
+.window {
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    background-color: white;
+    border: dashed black; 
+    width: 640px; 
+    padding: 8px; 
+    background-size: cover;
+}

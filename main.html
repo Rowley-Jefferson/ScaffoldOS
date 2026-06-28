@@ -3,28 +3,37 @@
 
 <head>
     <meta charset="utf-8">
-    <style>
-
-    </style>
     <title> Stardance hack club website test</title>
 </head>
 
 <body>
     <!-- Taskbar -->
-    <div style="display: flex; background-color: #b6d4db; justify-content: space-between; color: black;">
+    <div 
+    style="display: flex; background-color: #b6d4db; justify-content: space-between; color: black;">
         <img style="object-fit:contain; margin-left: 16px; justify-content: start;" src="./ScaffoldOS.png"/>
         <p style="color: black; justify-content: start;">ScaffoldOS</p>
         <p id="timeElement" style="margin-right: 16px; color: black; justify-content: end;">Time</p>
-    </div>
-
+</div>
+    
     <!-- This is the welcome window -->
     <div 
     id="welcomeWindow"
-    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: dashed black; width: 640px; padding: 8px; background-size: cover;">
-        <img style="cursor: pointer" id="welcomeclose" src="./Close.png"/>
-        <p style="cursor: pointer" id="welcomeopen">Welcome</p>
+    class="window"
+    style="top: 35%; left: 25%;">
+    <!-- Title Header-->
+        <div style="display: flex; justify-content: flex-end; color: black; height: 15px;">
+            <div class="welcomeopen" id="welcomeopen">
+                <p>▭</p>
+            </div>
+            <div class="closebutton" id="welcomeclose">
+                <p>X</p>
+            </div>
+        </div>
+        <div class="welcomeheader" id="welcomeWindowheader">
+            <p>dragHERE</p>
+        </div>
 
-        <h1>My WebOS</h1>
+        <h1>ScaffoldOS</h1>
         <h2>Introduction</h2>
         <p>Hello, This Website was created by Lycotope<br>
         It was created for the hackClub StarDance Challenge</p>
@@ -32,7 +41,17 @@
         <a href="https://www.instagram.com/starthackclub/">Instagram of HackClub</a>
     </div>
 
+    <!-- This is a Web App-->
+    <div id="desktopApps" style="padding: 64px;">
+        <div 
+        style="padding: 16px; text-align: center; width: fit-content">
+            <img src="Clock.png"/>
+            <p style="margin: 0px;">Clock</p>
+        </div>
+    </div> 
+
     <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
 </body>
 </html>

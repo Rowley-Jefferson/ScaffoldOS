@@ -1,9 +1,9 @@
+// Taskbar Time
 setInterval(function ()
 {document.querySelector("#timeElement").innerHTML = new Date().toLocaleString();}, 1000);
 
 // welcome window has the id of "welcome"
 var welcomeScreen = document.querySelector("#welcomeWindow")
-
 
 var welcomeScreenClose = document.querySelector("#welcomeclose")
 
@@ -80,4 +80,12 @@ function dragElement(element) {
     document.onmouseup = null;
     document.onmousemove = null;
   }
+}
+
+// icon selected
+var selectedIcon = undefined
+
+function selectIcon(element) {
+  element.classList.add("selected");
+  selectIcon = element
 }
