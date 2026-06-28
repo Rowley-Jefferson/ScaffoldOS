@@ -18,7 +18,12 @@
     </div>
 
     <!-- This is the welcome window -->
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: dashed black; width: 640px; border-radius: 16px; padding: 64px; background-image: url(./background.png); background-size: cover;">
+    <div 
+    id="welcomeWindow"
+    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: dashed black; width: 640px; padding: 8px; background-size: cover;">
+        <img style="cursor: pointer" id="welcomeclose" src="./Close.png"/>
+        <p style="cursor: pointer" id="welcomeopen">Welcome</p>
+
         <h1>My WebOS</h1>
         <h2>Introduction</h2>
         <p>Hello, This Website was created by Lycotope<br>
@@ -27,11 +32,7 @@
         <a href="https://www.instagram.com/starthackclub/">Instagram of HackClub</a>
     </div>
 
-    <script src="script.js">
-        setInterval(function ()
-        {document.querySelector("#timeElement").innerHTML = new Date().toLocaleString();}, 1000);
-    </script>
+    <script src="script.js"></script>
 
 </body>
-
 </html>
