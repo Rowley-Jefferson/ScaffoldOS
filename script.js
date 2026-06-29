@@ -1,5 +1,3 @@
-// !!!! reminder to clean up
-
 // Taskbar Time
 setInterval(function ()
 {document.querySelector("#timeElement").innerHTML = new Date().toLocaleString();}, 1000);
@@ -8,50 +6,68 @@ setInterval(function ()
 {document.querySelector("#clockElement").innerHTML = new Date().toLocaleString();}, 1000);
 
 // welcome window has the id of "welcome"
-var welcomeScreen = document.querySelector("#welcomeWindow")
-var welcomeScreenClose = document.querySelector("#welcomeWindowclose")
+var topbar = document.querySelector("#taskbar")
+var topIndex = 1
 
-// clock window has the id of "clock"
-var clockIcon = document.querySelector("#clockApp")
+// Windows
+var welcomeScreen = document.querySelector("#welcomeWindow")
 var clockScreen = document.querySelector("#clockWindow")
-var clockScreenClose = document.querySelector("#clockWindowclose")
+var notesScreen = document.querySelector("#notesWindow")
+
+// App windows
+initializeWindow("welcome")
+initializeWindow("clock")
+initializeWindow("notes")
+
+// Welcome Window links
+var clockLink = document.querySelector("#clockLink")
+var notesLink = document.querySelector("#notesLink")
+
+makeLinked(clockLink)
+makeLinked(notesLink)
+
+// Icons
+initializeIcon("clock")
+initializeIcon("notes")
+
+
+// Functions Zone
+
+/// Window functions ///
+// initialize a window
+function initializeWindow(elementName) {
+  var window = document.querySelector("#" + elementName + "Window")
+  makefocusable(window)
+  focusWindow(window)
+  dragElement(window)
+  makeClosable(window)
+  if (elementName != "welcome") {
+    initializeIcon(elementName)
+  }
+}
+
+// make a window focusable 
+function makefocusable(window) {
+  window.addEventListener("mousedown", () => focusWindow(window));
+}
 
 // make a window closable
 function makeClosable(window) {
-  var windowClose = document.querySelector("#" + window.id + "close")
+  var windowClose = document.querySelector("#" + window.id + "close");
   windowClose.addEventListener("click", () => closeWindow(window));
 }
-makeClosable(clockScreen)
-makeClosable(welcomeScreen)
-
-// window select
-welcomeScreen.addEventListener("mousedown", function() {
-  focusWindow(welcomeScreen);
-});
-
-clockScreen.addEventListener("mousedown", function() {
-  focusWindow(clockScreen);
-});
-
-// icon select
-clockIcon.addEventListener("click", function() {
-  handleIconTap(clockIcon);
-});
 
 // close a window that is passed through as "element"
 function closeWindow(element) {
   element.style.display = "none"
 }
 
-// ngl, i have no fucking idea what flex is, but my brain i son autopilotso ill figure it out later
+// open a window
 function openWindow(element) {
   element.style.display = "block"
   focusWindow(element)
 }
 
-var topbar = document.querySelector("#taskbar")
-
-var topIndex = 1
 function focusWindow(element) {
   topIndex++;
   element.style.zIndex = topIndex;
@@ -59,18 +75,48 @@ function focusWindow(element) {
   deselectIcon(selectedIcon)
 }
 
-// Make the DIV element draggable:
-dragElement(document.getElementById("welcomeWindow"));
-dragElement(document.getElementById("clockWindow"));
-
-function initializeWindow(elementName) {
-  var window = document.querySelector("#" + elementName)
-  focusWindow(window)
-  dragElement(window)
+// Welcome windowLink Handler
+function makeLinked(Link) {
+  Link.addEventListener("click", () => openWindow(document.querySelector("#" + ((Link.id).slice(0, -4)) + "Window")))
 }
 
-// My code -> Copy-pasted Code Barrier //
+/// Icon functions ///
+function initializeIcon(Icon) {
+  var desktopIcon = document.querySelector("#"+Icon+"App")
+  makeIconTappable(desktopIcon)
+}
 
+function makeIconTappable(Icon) {
+  Icon.addEventListener("click", function() {
+    handleIconTap(Icon);
+  });
+}
+
+// icon selected Handler
+var selectedIcon = undefined
+
+function selectIcon(element) {
+  element.classList.add("selected");
+  selectedIcon = element
+}
+
+function deselectIcon(element) {
+  if (element) element.classList.remove("selected")
+  selectedIcon = undefined
+}
+
+function handleIconTap(element) {
+  if (element) {
+    if (element.classList.contains("selected")) {
+      deselectIcon(element)
+      openWindow(document.querySelector("#"+(element.id).slice(0, -3)+"Window"))
+    } else {
+      selectIcon(element)
+    }
+  }
+}
+
+// Dragging functions ///
 // Step 1: Define a function called `dragElement` that makes an HTML element draggable.
 function dragElement(element) {
   // Step 2: Set up variables to keep track of the element's position.
@@ -112,8 +158,8 @@ function dragElement(element) {
     initialX = e.clientX;
     initialY = e.clientY;
     // Step 11: Update the element's new position by modifying its `top` and `left` CSS properties.
-    element.style.top = Math.max(topbar.offsetHeight + 8 + element.offsetHeight/2,element.offsetTop - currentY) + "px";
-    element.style.left = (element.offsetLeft - currentX) + "px";
+    element.style.top = Math.max(topbar.offsetHeight + 8 + element.offsetHeight/2, Math.min(window.innerHeight - 8 - element.offsetHeight/2,element.offsetTop - currentY)) + 'px';
+    element.style.left = Math.max(332,Math.min(window.innerWidth-332,element.offsetLeft - currentX)) + "px";
   }
 
   // Step 12: Define the `stopDragging` function to stop tracking mouse movement by removing the event listeners.
@@ -123,24 +169,5 @@ function dragElement(element) {
   }
 }
 
-// icon selected Handler
-var selectedIcon = undefined
 
-function selectIcon(element) {
-  element.classList.add("selected");
-  selectedIcon = element
-}
-
-function deselectIcon(element) {
-  if (element) element.classList.remove("selected")
-  selectedIcon = undefined
-}
-
-function handleIconTap(element) {
-  if (element.classList.contains("selected")) {
-    deselectIcon(element)
-    openWindow(clockScreen)
-  } else {
-    selectIcon(element)
-  }
-}
+// note content

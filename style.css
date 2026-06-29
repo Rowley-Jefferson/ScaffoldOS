@@ -7,18 +7,22 @@
     color: black;
 }
 
-.closebutton {
-    cursor: pointer; 
-    margin-right: 8px;
-    width: 12px; 
-    color: red;
-    justify-content: flex-end;
+.icon {
+    padding-top: 64px; 
+    padding-right: 32px; 
+    padding-left: 32px; 
+    width: 64px;
 }
 
-.windowTitle {
-    margin-right: 8px;
-    cursor: default; 
-    justify-content: flex-start;
+.window {
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    background-color: white;
+    border: dashed black; 
+    min-height: 64px;
+    width: 640px; 
+    padding: 8px; 
+    background-size: cover;
 }
 
 .dragheader {
@@ -31,13 +35,22 @@
     height: 15px;
 }
 
-.window {
-    position: absolute; 
-    transform: translate(-50%, -50%); 
-    background-color: white;
-    border: dashed black; 
-    min-height: 64px;
-    width: 640px; 
-    padding: 8px; 
-    background-size: cover;
+.windowTitle {
+    margin-right: 8px;
+    cursor: default; 
+    justify-content: flex-start;
+}
+
+.closebutton {
+    cursor: pointer; 
+    margin-right: 8px;
+    width: 12px; 
+    color: red;
+    justify-content: flex-end;
+}
+
+.windowLink {
+    cursor: pointer; 
+    color: blue;
+    text-decoration: underline;
 }
