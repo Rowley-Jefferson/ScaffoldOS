@@ -1,23 +1,28 @@
+// !!!! reminder to clean up
+
 // Taskbar Time
 setInterval(function ()
 {document.querySelector("#timeElement").innerHTML = new Date().toLocaleString();}, 1000);
+// clock time
+setInterval(function ()
+{document.querySelector("#clockElement").innerHTML = new Date().toLocaleString();}, 1000);
 
 // welcome window has the id of "welcome"
 var welcomeScreen = document.querySelector("#welcomeWindow")
-var welcomeScreenClose = document.querySelector("#welcomeclose")
-var welcomeScreenOpen = document.querySelector("#welcomeopen")
-
-welcomeScreenClose.addEventListener("click", function() {closeWindow(welcomeScreen);});
-
-welcomeScreenOpen.addEventListener("click", function() {openWindow(welcomeScreen);});
+var welcomeScreenClose = document.querySelector("#welcomeWindowclose")
 
 // clock window has the id of "clock"
+var clockIcon = document.querySelector("#clockApp")
 var clockScreen = document.querySelector("#clockWindow")
 var clockScreenClose = document.querySelector("#clockWindowclose")
-var clockScreenOpen = document.querySelector("#clockWindowopen")
 
-clockScreenClose.addEventListener("click", () => closeWindow(clockScreen));
-clockScreenOpen.addEventListener("click", () => openWindow(clockScreen));
+// make a window closable
+function makeClosable(window) {
+  var windowClose = document.querySelector("#" + window.id + "close")
+  windowClose.addEventListener("click", () => closeWindow(window));
+}
+makeClosable(clockScreen)
+makeClosable(welcomeScreen)
 
 // window select
 welcomeScreen.addEventListener("mousedown", function() {
@@ -26,6 +31,11 @@ welcomeScreen.addEventListener("mousedown", function() {
 
 clockScreen.addEventListener("mousedown", function() {
   focusWindow(clockScreen);
+});
+
+// icon select
+clockIcon.addEventListener("click", function() {
+  handleIconTap(clockIcon);
 });
 
 // close a window that is passed through as "element"
@@ -52,6 +62,12 @@ function focusWindow(element) {
 // Make the DIV element draggable:
 dragElement(document.getElementById("welcomeWindow"));
 dragElement(document.getElementById("clockWindow"));
+
+function initializeWindow(elementName) {
+  var window = document.querySelector("#" + elementName)
+  focusWindow(window)
+  dragElement(window)
+}
 
 // My code -> Copy-pasted Code Barrier //
 
@@ -112,18 +128,18 @@ var selectedIcon = undefined
 
 function selectIcon(element) {
   element.classList.add("selected");
-  selectIcon = element
+  selectedIcon = element
 }
 
 function deselectIcon(element) {
-  element.classList.remove("selected")
-  selectIcon = undefined
+  if (element) element.classList.remove("selected")
+  selectedIcon = undefined
 }
 
 function handleIconTap(element) {
   if (element.classList.contains("selected")) {
     deselectIcon(element)
-    openWindow(element)
+    openWindow(clockScreen)
   } else {
     selectIcon(element)
   }

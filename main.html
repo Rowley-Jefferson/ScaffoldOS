@@ -20,15 +20,15 @@
     <div 
     id="welcomeWindow"
     class="window"
-    style="top: 35%; left: 25%;">
+    style="top: 20%; left: 30%;">
     <!-- Title Header-->
         <div 
         class="dragheader" 
         id="welcomeWindowheader">
-            <div class="openbutton" id="welcomeopen">
-                <p>▭</p>
+            <div class="windowTitle">
+                <p>Welcome Window</p>
             </div>
-            <div class="closebutton" id="welcomeclose">
+            <div class="closebutton" id="welcomeWindowclose">
                 <p>X</p>
             </div>
         </div>
@@ -37,16 +37,16 @@
         <h1>ScaffoldOS</h1>
         <h2>Introduction</h2>
         <p>Hello, This Website was created by Lycotope<br>
-        It was created for the hackClub StarDance Challenge</p>
+        It was created for the hackClub StarDance Challenge<br></p>
         <a href="https://www.instagram.com/starthackclub/">Instagram of HackClub</a>
     </div>
 
     <!-- This is a Clock App-->
     <div 
-    id="desktopApps" 
+    id="clockApp" 
     style="padding: 64px;">
         <div 
-        style="padding: 16px; text-align: center; width: fit-content">
+        style="padding: 16px; text-align: center; width: fit-content;">
             <img src="Clock.png"/>
             <p style="margin: 0px;">Clock</p>
         </div>
@@ -56,21 +56,21 @@
     <div 
     id="clockWindow"
     class="window"
-    style="top: 65%; left: 15%;">
+    style="top: 25%; left: 75%; display: none;">
 
     <!-- Title Header-->
         <div 
         class="dragheader" 
         id="clockWindowheader">
-            <div class="openbutton" id="clockWindowopen">
-                <p>▭</p>
+            <div class="windowTitle">
+                <p>Clock App</p>
             </div>
             <div class="closebutton" id="clockWindowclose">
                 <p>X</p>
             </div>
         </div>
     <!-- Window Content-->
-
+        <p id="clockElement" style="margin-right: 16px; color: black; justify-content: end;">Time</p>
     </div>
 
     <script src="script.js"></script>

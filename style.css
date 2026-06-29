@@ -15,17 +15,18 @@
     justify-content: flex-end;
 }
 
-.openbutton {
-    cursor: pointer;
+.windowTitle {
     margin-right: 8px;
-    justify-content: flex-end;
+    cursor: default; 
+    justify-content: flex-start;
 }
 
 .dragheader {
     cursor: grab;
     display: flex;
+    width: 640px; 
     background-color: #b6d4db;
-    justify-content: flex-end;
+    justify-content: space-between;
     color: black;
     height: 15px;
 }
