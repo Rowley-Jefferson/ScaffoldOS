@@ -65,7 +65,7 @@
 }
 
 .clockHourHand {
-    background-color: red; 
+    background-color: black; 
     height: 100px; 
     width: 15px; 
     border-radius: 5px; 
