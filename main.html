@@ -6,7 +6,7 @@
     <title> Stardance hack club website test</title>
 </head>
 
-<body style="overflow: hidden;">
+<body style="overflow: hidden; background-image: url(./GraphPaperBackground.jpg);">
     <!-- Taskbar -->
     <div 
     id = "taskbar"
@@ -66,7 +66,7 @@
         <h1>ScaffoldOS</h1>
         <h2>Introduction</h2>
         <p>Hello, This Website was created by Lycotope<br>
-        It was created for the hackClub StarDance Challenge<br></p>
+        It was created for the "my webOS" mission<br></p>
         <p id="clockLink" class="windowLink">Clock App</p>
         <p id="notesLink" class="windowLink">Notes App</p>
     </div>
@@ -76,7 +76,7 @@
     <div 
     id="clockWindow"
     class="window"
-    style="top: 25%; left: 75%; display: none;">
+    style="top: 55%; left: 75%; display: none; height: 640px;">
 
     <!-- Title Header-->
         <div 
@@ -90,14 +90,19 @@
             </div>
         </div>
     <!-- Window Content-->
+     <br>
         <p id="clockElement" style="margin-right: 16px; color: black; justify-content: end;">Time</p>
+        <div id="clockVisual" style="height: 500px; width: 500px; border: black solid; justify-self: center; border-radius: 50%;">
+            <div class="clockMinuteHand"></div>
+            <div class="clockHourHand"></div>
+        </div>
     </div>
 
     <!-- This is a Clock App window-->
     <div 
     id="notesWindow"
     class="window"
-    style="top: calc(50% - 180px); left: 45%; display: none;">
+    style="top: calc(50% - 180px); left: 45%; display: none; min-height: 200px;">
 
     <!-- Title Header-->
         <div 
@@ -111,7 +116,8 @@
             </div>
         </div>
     <!-- Window Content-->
-        <p>DEAR DIARY</p>
+        <br><br>
+        <textarea placeholder="Write your plan here" style="width: 630px; border: none; outline: none; height: 170px;"></textarea>
     </div>
     
 

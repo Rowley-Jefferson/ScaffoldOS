@@ -1,6 +1,9 @@
 .taskbar {
     display: flex; 
     position: fixed; 
+    height: fit-content;
+    top: 0px;
+    left: 0px;
     width: 100%; 
     background-color: #b6d4db; 
     justify-content: space-between; 
@@ -8,14 +11,19 @@
 }
 
 .icon {
-    padding-top: 64px; 
-    padding-right: 32px; 
-    padding-left: 32px; 
+    margin-top: 64px;
+    padding: 4px; 
+    margin-right: 32px; 
+    margin-left: 32px; 
     width: 64px;
+    background-color: aliceblue;
+    border: #b6d4db solid;
+    border-radius: 8px;
 }
 
 .window {
     position: absolute; 
+    border-radius: 15px;
     transform: translate(-50%, -50%); 
     background-color: white;
     border: dashed black; 
@@ -53,4 +61,38 @@
     cursor: pointer; 
     color: blue;
     text-decoration: underline;
+    width: fit-content;
+}
+
+.clockHourHand {
+    background-color: red; 
+    height: 100px; 
+    width: 15px; 
+    border-radius: 5px; 
+    top: 40%; 
+    left: 50%; 
+    position: absolute;
+    animation-name: clockRotate;
+    animation-duration: 43200s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.clockMinuteHand {
+    background-color: black; 
+    height: 200px; 
+    width: 15px; 
+    border-radius: 5px; 
+    top: 25%; 
+    left: 50%; 
+    position: absolute;
+    animation-name: clockRotate;
+    animation-duration: 3600s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes clockRotate {
+    from {transform: rotate(0deg); transform-origin: 50% 100%; transition-timing-function: linear;}
+    to {transform: rotate(360deg); transform-origin: 50% 100%; transition-timing-function: linear;}
 }
