@@ -169,5 +169,10 @@ function dragElement(element) {
   }
 }
 
-
-// note content
+// Clock App Functions
+var date = new Date();
+var TimeSeconds = date.getHours()*3600 + date.getMinutes()*60 + date.getSeconds();
+const hourHand = document.querySelector("#hourHand");
+const minuteHand = document.querySelector("#minuteHand");
+hourHand.style.animationDelay = `-${TimeSeconds}s`;
+minuteHand.style.animationDelay = `-${TimeSeconds}s`;
